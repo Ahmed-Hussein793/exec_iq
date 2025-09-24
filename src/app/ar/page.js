@@ -1,0 +1,397 @@
+"use client";
+import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Mail, Linkedin, Twitter, Send, Award } from "lucide-react";
+
+export default function ExecIqPortfolioAr() {
+  const [showIntro, setShowIntro] = useState(true);
+  const [toast, setToast] = useState(null);
+
+  useEffect(() => {
+    const t = setTimeout(() => setShowIntro(false), 3000);
+    return () => clearTimeout(t);
+  }, []);
+
+  const achievements = [
+    {
+      year: "٢٠٢٥",
+      title: "المركز الأول • العراق",
+      desc: "الترتيب #1 في العراق ٢٠٢٥ في مجال البحث بالثغرات",
+      badge: "الأول",
+    },
+    {
+      year: "٢٠٢٤",
+      title: "المركز الأول • العراق",
+      desc: "حافظت على المركز الأول في العراق ٢٠٢٤",
+      badge: "الأول",
+    },
+    {
+      year: "٢٠٢٤",
+      title: "AWC 2024 • فريق العراق",
+      desc: "مشاركة في مسابقة الأمن السيبراني للعالم العربي",
+      badge: "AWC",
+    },
+    {
+      year: "عالمي",
+      title: "الأول عالميًا في OWASP XSS",
+      desc: "المرتبة الأولى عالميًا في قائمة XSS",
+      badge: "OWASP",
+    },
+    {
+      year: "٢٠٢٥ Q1",
+      title: "الأول عالميًا في VDP",
+      desc: "أعلى نتيجة في برنامج الإفصاح عن الثغرات (ربع سنوي)",
+      badge: "VDP",
+    },
+    {
+      year: "٢٠٢٥ Q3",
+      title: "الترتيب التاسع عالميًا",
+      desc: "تحقيق مركز ضمن أفضل ١٠ عالميًا",
+      badge: "الأول ٩",
+    },
+    {
+      year: "٢٠٢٢ - ٢٠٢٥",
+      title: "٧٨٥ ثغرة صالحة",
+      desc: "مبلّغ عنها في ٦٩ شركة مختلفة",
+      badge: "٧٨٥ ثغرة",
+    },
+  ];
+
+  const certifications = [
+    { name: "eJPTv2", issuer: "INE" },
+    { name: "eWPTxv3", issuer: "INE" },
+    { name: "CAPT", issuer: "Cybersecurity Program" },
+  ];
+
+  function handleContact(e) {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
+    if (!name || !email || !message) {
+      setToast({ type: "error", text: "يرجى ملء جميع الحقول." });
+      setTimeout(() => setToast(null), 2500);
+      return;
+    }
+    setToast({
+      type: "success",
+      text: "تم إرسال الرسالة. سيتم التواصل قريبًا (تجريبي).",
+    });
+    setTimeout(() => setToast(null), 3000);
+    form.reset();
+  }
+
+  return (
+    <div
+      dir="rtl"
+      className="min-h-screen bg-gradient-to-b from-[#0b0f14] via-[#07080b] to-[#050507] text-slate-200 antialiased"
+    >
+        <meta name="description" content="علي الأكبر ازهر (exec_iq) – باحث أمني عراقي متخصص في أبحاث الثغرات السيبرانية والكشف عن الثغرات والتأمين الدفاعي. أكثر من 700 ثغرة موثقة ومسجلة في شركات عالمية." />
+        <meta name="keywords" content="علي الأكبر, علي الأكبر ازهر, الباحث الأمني العراقي, باحث أمني, Cybersecurity Iraq, Vulnerability Research, Bug Bounty" />
+        <meta name="robots" content="index, follow" />
+        <meta name="language" content="ar"></meta>
+      {/* Intro overlay */}
+      <AnimatePresence>
+        {showIntro && (
+          <motion.div
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0, transition: { duration: 0.8 } }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
+          >
+            <motion.div
+              initial={{ scale: 0.95, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-center"
+            >
+              <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4">
+                exec_iq
+              </h1>
+              <p className="text-lg md:text-2xl opacity-90">
+                <span className="inline-block">
+                  باحث في الأمن السيبراني من العراق
+                </span>
+                <span className="inline-block ml-2 animate-pulse">▌</span>
+              </p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Header */}
+      <header className="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <div className="text-xl font-bold tracking-wider">exec_iq</div>
+          <div className="text-sm opacity-70">Ali Al-Akbar Azhar</div>
+        </div>
+        <nav className="hidden md:flex gap-4 items-center">
+          <a href="#home" className="nav-link">
+            الرئيسية
+          </a>
+          <a href="#achievements" className="nav-link">
+            الإنجازات
+          </a>
+          <a href="#certifications" className="nav-link">
+            الشهادات
+          </a>
+          <a href="#about" className="nav-link">
+            حول
+          </a>
+          <a href="#contact" className="nav-link">
+            تواصل
+          </a>
+        </nav>
+      </header>
+
+      {/* Main */}
+      <main className="max-w-6xl mx-auto px-6 pb-20">
+        {/* Hero */}
+        <section
+          id="home"
+          className="relative mt-6 flex flex-col md:flex-row items-center gap-12"
+        >
+          <motion.div
+            className="flex justify-center mb-6"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <motion.img
+              src="/4972008902862417866.jpg"
+              alt="علي الأكبر ازهر الباحث الأمني العراقي"
+              className="w-40 h-40 md:w-52 md:h-52 rounded-full border-4 border-indigo-500 shadow-xl object-cover cursor-pointer"
+              whileHover={{ scale: 1.08, rotate: -2 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 200 }}
+            />
+          </motion.div>
+
+          <div className="flex-1 text-right">
+            <motion.h2
+              initial={{ x: 20, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              className="text-3xl md:text-4xl font-extrabold leading-tight"
+            >
+              علي الأكبر أزهر{" "}
+              <span className="text-indigo-400">(exec_iq)</span>
+              <span className="mr-2 inline-block animate-pulse">▌</span>
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mt-4 text-slate-300 max-w-xl ml-auto"
+            >
+              باحث في الأمن السيبراني: نسعى لتسهيل مهام الحماية وضمان أمن
+              الأصول الرقمية.
+            </motion.p>
+          </div>
+        </section>
+
+        {/* Achievements */}
+        <section id="achievements" className="mt-20 text-right">
+          <h3 className="text-2xl font-bold mb-8">الإنجازات</h3>
+          <div className="space-y-8">
+            {achievements.map((a, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                className="p-5 rounded-2xl shadow-xl backdrop-blur-sm border border-white/5 bg-gradient-to-br from-[#071021] to-[#07111a] hover:-translate-x-2 hover:text-indigo-400 transition-all duration-300 ease-in-out"
+              >
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="text-sm text-indigo-300 font-semibold">
+                      {a.year}
+                    </div>
+                    <div className="text-lg font-bold mt-1">{a.title}</div>
+                  </div>
+                  <div className="text-xs px-2 py-1 rounded-md bg-white/5">
+                    {a.badge}
+                  </div>
+                </div>
+                <p className="mt-3 text-slate-300 text-sm">{a.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* Certifications */}
+        <section id="certifications" className="mt-20 text-right">
+          <h3 className="text-2xl font-bold mb-8">الشهادات</h3>
+          <div className="grid md:grid-cols-3 gap-6">
+            {certifications.map((c, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ scale: 0.9, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                className="p-6 rounded-xl border border-white/5 shadow-lg bg-gradient-to-br from-[#0b1221] to-[#071124] flex items-center gap-4 hover:scale-105 hover:shadow-xl hover:border-indigo-500/60 hover:bg-slate-800/60 transition-all duration-300 ease-in-out"
+              >
+                <Award className="text-indigo-400" />
+                <div>
+                  <div className="font-semibold">{c.name}</div>
+                  <div className="text-xs opacity-70">{c.issuer}</div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* About */}
+        <section id="about" className="mt-20 text-right">
+          <h3 className="text-2xl font-bold mb-8">حول</h3>
+          <p className="text-slate-300 max-w-2xl ml-auto">
+            أركز على البحث في الثغرات، الإفصاح المسؤول، والبرمجة الآمنة. مع
+            مئات البلاغات المعتمدة عبر عشرات الشركات، أسعى لرفع مستوى أمان
+            التطبيقات محليًا وعالميًا.
+          </p>
+        </section>
+
+        {/* Contact */}
+<section id="contact" className="mt-20">
+  <h3 className="text-2xl font-bold mb-8">تواصل معي</h3>
+  <div className="grid md:grid-cols-3 gap-6">
+
+    {/* بطاقة البريد الإلكتروني */}
+{/* Contact card with social icons */}
+<div className="p-6 rounded-2xl shadow-xl border border-white/5 bg-gradient-to-br from-[#071017] to-[#061016]
+                transform hover:scale-105 hover:shadow-2xl hover:border-indigo-500/60 hover:bg-slate-800/40
+                transition-all duration-300 ease-in-out">
+  <div className="flex items-center gap-3 mb-4">
+    <Mail size={18} />
+    <div>
+      <div className="font-semibold">البريد الإلكتروني</div>
+      <div className="text-xs opacity-70">exec_iq@wearehackerone.com</div>
+    </div>
+  </div>
+
+  <div className="flex gap-3 mt-4">
+    {/* LinkedIn */}
+    <a target="_blank" className="social-card" href="https://www.linkedin.com/in/exec-iq/" aria-label="LinkedIn">
+      <Linkedin />
+    </a>
+
+    {/* Telegram */}
+    <a target="_blank" className="social-card" href="https://t.me/exec_iq" aria-label="Telegram">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 240 240" fill="currentColor">
+        <path d="M120 0C53.73 0 0 53.73 0 120s53.73 120 120 120 120-53.73 120-120S186.27 0 120 0zm56.41 84.67l-23.23 109.39c-1.75 7.64-6.37 9.52-12.92 5.95l-35.75-26.35-17.23 16.55c-1.91 1.91-3.51 3.51-7.2 3.51l2.59-36.22 65.88-59.46c2.87-2.59-.63-4.06-4.43-1.47l-81.62 51.47-35.18-11.01c-7.64-2.39-7.79-7.64 1.61-11.29l137.52-53.03c6.37-2.39 11.97 1.47 9.6 11.26z"/>
+      </svg>
+    </a>
+
+    {/* Bugcrowd */}
+    <a target="_blank" className="social-card" href="https://bugcrowd.com/h/ExeC_IQ" aria-label="Bugcrowd">
+      <img src="/Bugcrowd-Logo-Submark.png" width={30} height={20} alt="Bugcrowd"/>
+    </a>
+
+    {/* HackerOne */}
+    <a target="_blank" className="social-card" href="https://hackerone.com/exec_iq?type=user" aria-label="HackerOne">
+      <img src="/h1_mark_white.png" width={16} height={10} alt="HackerOne"/>
+    </a>
+  </div>
+</div>
+
+<style>{`
+  .social-card{
+    display:inline-flex; 
+    align-items:center; 
+    justify-content:center; 
+    width:40px; 
+    height:40px; 
+    border-radius:10px; 
+    background:rgba(255,255,255,0.02); 
+    border:1px solid rgba(255,255,255,0.03); 
+    transition:all .18s; 
+    cursor:pointer;
+  }
+  .social-card:hover{
+    transform:translateY(-6px) scale(1.03); 
+    box-shadow:0 12px 30px rgba(7,11,35,0.7);
+  }
+`}</style>
+
+    {/* بطاقة نموذج التواصل */}
+    <div className="col-span-2 p-6 rounded-2xl shadow-2xl border border-white/5 bg-gradient-to-br from-[#071017] to-[#061016]
+                    transform hover:scale-105 hover:shadow-3xl hover:border-indigo-500/60 hover:bg-slate-800/40
+                    transition-all duration-300 ease-in-out">
+      <form action="https://api.web3forms.com/submit" method="POST" className="space-y-4">
+        <div className="grid md:grid-cols-2 gap-3">
+          <input name="name" className="input transform hover:scale-105 hover:shadow-md transition-all duration-300 ease-in-out" placeholder="اسمك" />
+          <input name="email" className="input transform hover:scale-105 hover:shadow-md transition-all duration-300 ease-in-out" placeholder="بريدك الإلكتروني" />
+          <input type="hidden" name="access_key" value="53c7087d-54ba-46fe-983d-f6ea4b824a4e" />
+          <input type="checkbox" name="botcheck" className="hidden" />
+        </div>
+        <textarea
+          name="message"
+          rows={4}
+          className="input resize-none transform hover:scale-105 hover:shadow-md transition-all duration-300 ease-in-out"
+          placeholder="اكتب رسالتك هنا"
+        ></textarea>
+        <div className="flex items-center justify-end">
+          <button type="submit" className="btn-primary inline-flex items-center gap-2
+                                           transform hover:scale-105 hover:shadow-xl hover:bg-indigo-500
+                                           transition-all duration-300 ease-in-out cursor-pointer">
+            <Send size={16} /> إرسال الرسالة
+          </button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</section>
+      </main>
+
+      <footer className="py-8 text-center text-sm opacity-70">
+        <div>© {new Date().getFullYear()} exec_iq — علي الأكبر أزهر</div>
+      </footer>
+
+      {/* Toast */}
+      <AnimatePresence>
+        {toast && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            className={`fixed left-6 bottom-6 z-50 p-3 rounded-lg shadow-xl ${
+              toast.type === "success" ? "bg-emerald-600" : "bg-rose-600"
+            }`}
+          >
+            {toast.text}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <style>{`
+        .nav-link {
+          color: rgba(255,255,255,0.8);
+          padding: 6px 10px;
+          border-radius: 8px;
+          transition: all .18s;
+        }
+        .nav-link:hover {
+          transform: translateY(-2px);
+          color: #dbeafe;
+          background: linear-gradient(90deg, rgba(124,58,237,0.08), rgba(6,182,212,0.04));
+        }
+        .btn-primary {
+          background: linear-gradient(90deg,#06b6d4,#7c3aed);
+          padding: 10px 14px;
+          border-radius: 10px;
+          font-weight: 600;
+        }
+        .input {
+          background: rgba(255,255,255,0.02);
+          border: 1px solid rgba(255,255,255,0.04);
+          padding: 12px 14px;
+          border-radius: 10px;
+          color: inherit;
+          width: 100%;
+        }
+        .input:focus {
+          outline: none;
+          box-shadow: 0 6px 24px rgba(124,58,237,0.12);
+          transform: translateY(-2px);
+        }
+      `}</style>
+    </div>
+  );
+}

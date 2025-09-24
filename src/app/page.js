@@ -6,7 +6,6 @@ import { Mail, Linkedin, Twitter, Send, Award } from "lucide-react";
 export default function ExecIqPortfolio() {
   const [showIntro, setShowIntro] = useState(true);
   const [toast, setToast] = useState(null);
-
   useEffect(() => {
     const t = setTimeout(() => setShowIntro(false), 3000);
     return () => clearTimeout(t);
@@ -73,27 +72,14 @@ export default function ExecIqPortfolio() {
     { text: "Secure Coder" },
   ];
 
-  function handleContact(e) {
-    e.preventDefault();
-    const form = e.target;
-    const name = form.name.value.trim();
-    const email = form.email.value.trim();
-    const message = form.message.value.trim();
-    if (!name || !email || !message) {
-      setToast({ type: "error", text: "Please fill all fields." });
-      setTimeout(() => setToast(null), 2500);
-      return;
-    }
-    setToast({
-      type: "success",
-      text: "Message sent. Will contact soon (demo).",
-    });
-    setTimeout(() => setToast(null), 3000);
-    form.reset();
-  }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0b0f14] via-[#07080b] to-[#050507] text-slate-200 antialiased">
+    <div className="min-h-screen bg-gradient-to-b from-[#0b0f14] via-[#07080b] to-[#050507] text-slate-200 antialiased" >
+      <meta name="description" content="Ali Al-Akbar Azhar (exec_iq) – Iraqi cybersecurity researcher specializing in vulnerability research, bug bounty, and defensive security. Over 700 validated reports disclosed responsibly." />
+      <meta name="keywords" content="Ali Al-Akbar, Ali Al-Akbar Azhar, Iraqi security researcher, cybersecurity researcher, bug bounty, vulnerability research, exec_iq" />
+      <meta name="robots" content="index, follow" />
+      <meta name="language" content="en" />
+
       {/* Intro overlay */}
       <AnimatePresence>
         {showIntro && (
@@ -148,8 +134,8 @@ export default function ExecIqPortfolio() {
           transition={{ duration: 0.8 }}
         >
           <motion.img
-            src="/4972008902862417866.jpg" // ضع صورتك هنا
-            alt="Profile Picture"
+            src="/4972008902862417866.jpg" 
+            alt="Ali Al-Akbar Azhar cybersecurity researcher"
             className="w-40 h-40 md:w-52 md:h-52 rounded-full border-4 border-indigo-500 shadow-xl object-cover cursor-pointer"
             whileHover={{ scale: 1.08, rotate: 2 }}
             whileTap={{ scale: 0.95 }}
@@ -259,27 +245,21 @@ transition-transform transition-shadow transition-colors duration-300 ease-in-ou
       </div>
 
       <div className="flex gap-3 mt-4">
-        <a className="social-card transform hover:scale-110 hover:shadow-lg hover:text-indigo-400 transition-all duration-300 ease-in-out" href="#" aria-label="LinkedIn">
+        <a target="_blank" className="social-card transform hover:scale-110 hover:shadow-lg hover:text-indigo-400 transition-all duration-300 ease-in-out" href="https://www.linkedin.com/in/exec-iq/" aria-label="LinkedIn">
           <Linkedin />
         </a>
-        <a className="social-card transform hover:scale-110 hover:shadow-lg hover:text-indigo-400 transition-all duration-300 ease-in-out" href="#" aria-label="Twitter">
-          <Twitter />
-        </a>
-        <a className="social-card transform hover:scale-110 hover:shadow-lg hover:text-indigo-400 transition-all duration-300 ease-in-out" href="#" aria-label="Telegram">
+        <a target="_blank" className="social-card transform hover:scale-110 hover:shadow-lg hover:text-indigo-400 transition-all duration-300 ease-in-out" href="https://t.me/exec_iq" aria-label="Telegram">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 240 240" fill="currentColor">
                 <path d="M120 0C53.73 0 0 53.73 0 120s53.73 120 120 120 120-53.73 120-120S186.27 0 120 0zm56.41 84.67l-23.23 109.39c-1.75 7.64-6.37 9.52-12.92 5.95l-35.75-26.35-17.23 16.55c-1.91 1.91-3.51 3.51-7.2 3.51l2.59-36.22 65.88-59.46c2.87-2.59-.63-4.06-4.43-1.47l-81.62 51.47-35.18-11.01c-7.64-2.39-7.79-7.64 1.61-11.29l137.52-53.03c6.37-2.39 11.97 1.47 9.6 11.26z"/>
               </svg>
         </a>
-        <a className="social-card transform hover:scale-110 hover:shadow-lg hover:text-indigo-400 transition-all duration-300 ease-in-out" href="#" aria-label="Telegram">
-<svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="currentColor"
-      viewBox="0 0 24 24"
-      className="w-5 h-5"
-    >
-      <path d="M12 0C5.37 0 0 5.373 0 12c0 5.303 3.438 9.8 8.205 11.387.6.113.82-.26.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.236 1.84 1.236 1.07 1.834 2.807 1.304 3.492.997.108-.774.418-1.305.76-1.605-2.665-.3-5.467-1.332-5.467-5.93 0-1.31.468-2.382 1.235-3.22-.123-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.3 1.23a11.52 11.52 0 013.003-.404c1.02.005 2.045.137 3.003.404 2.292-1.552 3.3-1.23 3.3-1.23.653 1.653.241 2.873.118 3.176.77.838 1.235 1.91 1.235 3.22 0 4.61-2.807 5.625-5.48 5.922.43.372.823 1.103.823 2.222 0 1.606-.015 2.898-.015 3.293 0 .319.216.694.825.576C20.565 21.795 24 17.303 24 12c0-6.627-5.373-12-12-12z"/>
-    </svg>
+        <a target="_blank" className="social-card transform hover:scale-110 hover:shadow-lg hover:text-indigo-400 transition-all duration-300 ease-in-out" href="https://bugcrowd.com/h/ExeC_IQ" aria-label="Bug Crowd">
+          <img src="/Bugcrowd-Logo-Submark.png" width={30} height={20} alt="bug crowd"/>
         </a>
+        <a target="_blank" className="social-card transform hover:scale-110 hover:shadow-lg hover:text-indigo-400 transition-all duration-300 ease-in-out" href="https://hackerone.com/exec_iq?type=user" aria-label="Hacker One">
+          <img src="/h1_mark_white.png" width={16} height={10} alt="Hacker One"/>
+        </a>
+
       </div>
     </div>
 
@@ -287,10 +267,13 @@ transition-transform transition-shadow transition-colors duration-300 ease-in-ou
     <div className="col-span-2 p-6 rounded-2xl shadow-2xl border border-white/5 bg-gradient-to-br from-[#071017] to-[#061016]
                     transform hover:scale-105 hover:shadow-3xl hover:border-indigo-500/60 hover:bg-slate-800/40
                     transition-all duration-300 ease-in-out">
-      <form onSubmit={handleContact} className="space-y-4">
+      <form action="https://api.web3forms.com/submit" method="POST" className="space-y-4">
         <div className="grid md:grid-cols-2 gap-3">
           <input name="name" className="input transform hover:scale-105 hover:shadow-md transition-all duration-300 ease-in-out" placeholder="Your name" />
           <input name="email" className="input transform hover:scale-105 hover:shadow-md transition-all duration-300 ease-in-out" placeholder="Your email" />
+          <input type="hidden" name="access_key" value="53c7087d-54ba-46fe-983d-f6ea4b824a4e" />
+          <input type="checkbox" name="botcheck" className="hidden" />
+
         </div>
         <textarea
           name="message"
